@@ -125,17 +125,15 @@ class Sailthru(rocket.Rocket):
 
     Initialize with api_key and api_secret_key, both available from
     sailthru
-
-    api_url defaults to API_URL
-    api_url_secure defaults to API_URL_SECURE
     """
     def __init__(self, *args, **kwargs):
         self.function_list = FUNCTIONS
         super(Sailthru, self).__init__(*args, **kwargs)
         self.client = 'sailthru'
+        self.api_url = API_URL
 
     def check_error(self, response):
-        """Checks if the given Api response is an error, and then raises
+        """Checks if the given API response is an error, and then raises
         the appropriate exception.
         """
         if type(response) is dict and response.has_key('error'):
@@ -164,7 +162,7 @@ if __name__ == '__main__':
     api_secret_key = ''
     email = 'ih@ve.one'
 
-    sailthru = Sailthru(api_key, api_secret_key, api_url=API_URL)
+    sailthru = Sailthru(api_key, api_secret_key)
 
     email = sailthru.email.get(email)
     print email
