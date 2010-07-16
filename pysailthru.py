@@ -10,12 +10,6 @@ For more information, see
 
 Home Page: http://github.com/extensionfm/pysailthru
 Developer: http://docs.sailthru.com/api
-
-Pysailthru has one external dependency: simplejson
-
-http://undefined.org/python/#simplejson to download it
-    or
-use pip install simplejson
 """
 
 import rocket
