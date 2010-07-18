@@ -124,7 +124,7 @@ class BlastProxy(BlastProxy):
         """
         if kwargs.has_key('options'):
             for o in kwargs['options']:
-                kwargs[o] = o
+                kwargs[o] = kwargs['options'][o]
             kwargs.remove('options')
         return super(BlastProxy, self).post(**kwargs)
 
