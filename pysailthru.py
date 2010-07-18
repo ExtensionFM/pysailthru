@@ -13,7 +13,7 @@ Developer: http://docs.sailthru.com/api
 """
 
 import rocket
-
+from rocket.utils import sign_sorted_values
 
 ########################################
 # Settings #############################
@@ -154,11 +154,10 @@ class Sailthru(rocket.Rocket):
 
 
     def build_query_args(self, *args, **kwargs):
-        """Overrides Rocket's build_query_arg to use _get_sorted_value_hash
-        instead
+        """Overrides Rocket's build_query_arg to set signing_alg to
+        sign_sorted_values
         """
-        signing_alg = self._get_sorted_value_hash
-        return super(Sailthru, self).build_query_args(signing_alg=signing_alg,
+        return super(Sailthru, self).build_query_args(signing_alg=sign_sorted_values,
                                                       *args, **kwargs)
     
         
