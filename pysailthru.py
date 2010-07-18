@@ -78,7 +78,7 @@ FUNCTIONS = {
             ('subject', str, []),
             ('content_html', str, []),
             ('context_html', str, []),
-            ('options', rocket.json, []),
+            ('options', rocket.json, ['optional']),
         ],
     },
     'template': {
@@ -107,7 +107,26 @@ FUNCTIONS = {
     },
 }
 
-rocket.generate_proxies(FUNCTIONS, _get_api_docstring)
+rocket.generate_proxies(FUNCTIONS, _get_api_docstring, foreign_globals=globals())
+
+class BlastProxy(BlastProxy):
+    """Special proxy for handling the optional variables of 'blast.post'"""
+
+    def post(self, **kwargs):
+        """Sailthru call. See http://docs.sailthru.com/api/blast#%post-mode
+
+        This call accepts many optional arguments. Instead of handling each
+        one, I check for a general 'options' dict and expand those options
+        by adding them to kwargs before the dynamic proxy is called.
+
+        This approach isn't necessary for Rocket, but it demonstrates how you
+        can override the IDL's generated calls for special handling.
+        """
+        if kwargs.has_key('options'):
+            for o in kwargs['options']:
+                kwargs[o] = o
+            kwargs.remove('options')
+        return super(BlastProxy, self).post(**kwargs)
 
 
 ########################################
