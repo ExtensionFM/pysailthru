@@ -3,7 +3,7 @@ Pysailthru
 
 Pysailthru is a Python library for interfacing with Sailthru's API
 
-Pysailthru is licensed under the `Apache Licence, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html`_
+Pysailthru is licensed under the `Apache Licence, Version 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>`_
 
 
 Features
