@@ -107,7 +107,10 @@ FUNCTIONS = {
     },
 }
 
-rocket.generate_proxies(FUNCTIONS, _get_api_docstring, foreign_globals=globals())
+# Builds FUNCTIONS into actual objects and inserts them into globals()
+rocket.generate_proxies(FUNCTIONS,
+                        _get_api_docstring,
+                        foreign_globals=globals())
 
 class BlastProxy(BlastProxy):
     """Special proxy for handling the optional variables of 'blast.post'"""
@@ -141,9 +144,8 @@ class Sailthru(rocket.Rocket):
     """
     def __init__(self, *args, **kwargs):
         self.function_list = FUNCTIONS
-        super(Sailthru, self).__init__(*args, **kwargs)
-        self.client = 'sailthru'
-        self.api_url = API_URL
+        super(Sailthru, self).__init__(client='sailthru', api_url=API_URL,
+                                       *args, **kwargs)
 
     def check_error(self, response):
         """Checks if the given API response is an error, and then raises
