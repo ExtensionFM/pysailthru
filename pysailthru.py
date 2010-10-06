@@ -163,7 +163,7 @@ class Sailthru(rocket.Rocket):
                                                       *args, **kwargs)
     
         
-    def gen_query_url(self, url, function, format=None, get_args=None):
+    def gen_query_url(self, url, function, format=None, method=None, get_args=None):
         """Sailthru urls look like 'url/function'.
 
         Example: http://api.sailthru.com/email
