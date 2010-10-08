@@ -143,8 +143,7 @@ class Sailthru(rocket.Rocket):
     sailthru
     """
     def __init__(self, *args, **kwargs):
-        self.function_list = FUNCTIONS
-        super(Sailthru, self).__init__(client='sailthru', api_url=API_URL,
+        super(Sailthru, self).__init__(FUNCTIONS, api_url=API_URL,
                                        *args, **kwargs)
 
     def check_error(self, response):
