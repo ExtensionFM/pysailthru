@@ -1,1 +1,1 @@
-`PROJECT HAS MOVED <https://github.com/ExtensionFM/rocket/tree/master/modules/rocket_sailthru/>`_
+`PROJECT HAS MOVED <https://github.com/exfm/rocket/tree/master/modules/r_sailthru/>`_
